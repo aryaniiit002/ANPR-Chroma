@@ -18,7 +18,9 @@ An application to recognise the number plate from a given image of a car and ver
 4. Run run.py in ANPR_Chroma folder (Make sure Apache server is running)
 5. Go to localhost:5000 to see your application in action. (Port 5000 has been configured in run.py)
 
-Note: File [run.py](ANPR_Chroma/run.py) is to run flask application, if you want to test main licence plate recognition check [main.py](ANPR_Chroma/flaskblog/main.py)
+Note: 
+* File [run.py](ANPR_Chroma/run.py) is to run flask application, if you want to test main licence plate recognition check [main.py](ANPR_Chroma/flaskblog/main.py)
+* Make sure to add your own 2 databases in "__init__.py" directory before running flask application.
 
 ## Built With
 
