@@ -26,9 +26,8 @@ An application to recognise the number plate from a given image of a car and ver
 * [tKinter](https://docs.python.org/2/library/tkinter.html) -Used for designing of the UI
 * [SQLite](https://www.sqlite.org/index.html) -Used for designing and manipulating of database
 
-## Authors   
-
-### Aryan Bindal
+## Author -  Aryan Bindal       
+        
 Contacts:        
 
 [Gmail](aryanbindal2015@gmail.com)                 
