@@ -10,9 +10,9 @@ An application to recognise the number plate from a given image of a car and ver
 ## Setup
 
 1. Clone the repository
-2. Create virtual env. 
-   On windows you could do something like: py -m venv env
-   On macOS and Linux: python3 -m venv env
+2. Create virtual env.             
+   On windows you could do something like: py -m venv env            
+   On macOS and Linux: python3 -m venv env           
    {{ Activate the virtual environment env }}
 3. Install the needed modules using: pip install -r requirements.txt
 4. Run run.py in ANPR_Chroma folder (Make sure Apache server is running)
