@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block title %}
+    ANPR Chroma - Home
+{% endblock title %}
+{% block content %}
+    {% if current_user.is_authenticated %}
+    <h2>CheckPost Guardian: {{ current_user.username }}</h2>
+    <h4><a href="/account">Check Account</a></h4>
+    <style>        
+        .vertical-center {
+          margin: 0;
+          position: absolute;
+          top: 70%;
+          -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+          text-align: center;
+        }
+        </style>
+        <div class="vertical-center">
+            <a href="{{ url_for('anpr') }}" class="btn btn-primary" style="margin-top: 50;">AUTOMATIC NUMBER PLATE DETECTION</a>
+        </div>
+    {% else %}
+    <h1>CheckPost : </h1>
+    <h5><a href="/login">Login Required</a></h5>
+    {% endif %}
+
+{% endblock content %}

@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+{% block title %}
+    ANPR Online Demo
+{% endblock title %}
+{% block content %}
+    <div class="content-section">
+      <form method="POST" action="" enctype="multipart/form-data">
+          {{ form.hidden_tag() }}
+          <fieldset class="form-group">
+            <div class="form-group" style="margin-top: 50;">
+                {{ form.picture.label() }}
+                {{ form.picture(class="form-control-file") }}
+                {% if form.picture.errors %}
+                    {% for error in form.picture.errors %}
+                        <span class="text-danger">{{ error }}</span></br>
+                    {% endfor %}
+                {% endif %}
+                <p 
+                  id="filename" 
+                  style="display:none; width: 200px;margin: 0px auto;padding: 5px;border: 1px solid rgb(14, 13, 13);border-radius: 5px; color : rgb(7, 7, 7)" 
+                  class="margin-auto"></p>
+            </div>
+          </fieldset>
+          <div class="form-group">
+              {{ form.submit(class="btn btn-outline-info") }}
+          </div>
+      </form>
+    </div>
+    <br>
+    <br><br>
+    {% if img_src %}
+      <img src="{{ img_src  }}" alt="Input vehicle" width="500" height="400"> 
+      <style>
+        .box {
+           position: relative;
+        }
+        .direction {
+           position: absolute;
+           top: -525px;
+           right: 60px;
+           font-size: 13px;
+        }
+     </style>
+      <div class = "box">
+        <div class="direction">
+          <h3>Predicted Characters : {% if label %} {{ label }} {% endif %}</h3>
+          <br>
+          <br>
+          {% if msg %}
+          <div class="border-top pt-3">
+            <h4><b>{{ msg }}</b></h4>
+            <a href="{{ url_for('register') }}" class="btn btn-primary" style="margin-top: 50;">Register here!</a>
+          </div>
+          {% endif %}
+        </div>
+      </div>      
+    {% endif %}
+{% endblock content %}
