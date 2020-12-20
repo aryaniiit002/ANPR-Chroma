@@ -3,11 +3,11 @@
 
 Flask is a web application framework written in Python. I have deployed my previous project of LicensePlateDetector using Flask as an api. This is an easy and quick way to see your models in production.
 
-###Number Plate Recognition System :
+### Number Plate Recognition System :
 
 An application to recognise the number plate from a given image of a car and verify it from a local database. The application can be used for many purposes like suveillance,security checks etc. 
 
-##Setup
+## Setup
 
 1. Clone the repository
 2. Create virtual env. 
