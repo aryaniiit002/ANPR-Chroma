@@ -26,13 +26,13 @@ An application to recognise the number plate from a given image of a car and ver
 * [tKinter](https://docs.python.org/2/library/tkinter.html) -Used for designing of the UI
 * [SQLite](https://www.sqlite.org/index.html) -Used for designing and manipulating of database
 
-## Authors
+## Authors      
 ###Aryan Bindal
 
-Contacts:
+Contacts:        
 
-[Gmail](aryanbindal2015@gmail.com)
-[Instagram](https://www.instagram.com/aryan__bindal/)
-[linkedin](https://www.linkedin.com/in/aryan-bindal-3077401ab)
-[Facebook](https://www.facebook.com/aryan.bindal.1604)
+[Gmail](aryanbindal2015@gmail.com)                 
+[Instagram](https://www.instagram.com/aryan__bindal/)          
+[linkedin](https://www.linkedin.com/in/aryan-bindal-3077401ab)           
+[Facebook](https://www.facebook.com/aryan.bindal.1604)           
 
