@@ -23,7 +23,7 @@ An application to recognise the number plate from a given image of a car and ver
 
 * [Python3.7](https://www.python.org/) -One of the most popular programming language
 * [OpenCV(V2.0.0)](https://opencv.org/) - Open Source Computer Vision Library
-* [Flask](https://flask.palletsprojects.com/en/1.1.x/)
+* [Flask](https://flask.palletsprojects.com/en/1.1.x/) - Web application framework written in Python
 * [SQLite](https://www.sqlite.org/index.html) -Used for designing and manipulating of database
 
 ## Author -  Aryan Bindal       
