@@ -7,7 +7,7 @@ from flask_mail import Message
 from flaskblog.forms import RegistrationForm, LoginForm, UpdateAccountForm, RegistrationLoginForm, PostForm
 from flaskblog.models import User, LUser
 from flask_login import login_user, current_user, logout_user, login_required
-from flaskblog.main import PlateDetection
+from flaskblog.product import main
 from werkzeug.utils import secure_filename
 
 UPLOAD_FOLDER = 'flaskblog/static/uploads/'
@@ -27,14 +27,14 @@ def anpr():
     form = PostForm()
     if form.validate_on_submit():
         flash("File  uploaded successfully", 'success')
-        extracted_output=PlateDetection(form.picture.data)
-        print("####################################################")
-        print(extracted_output)
-        print("####################################################")
         filename=secure_filename(form.picture.data.filename)
         picture_path = os.path.join(app.root_path, 'static/uploads', filename)
         i = Image.open(form.picture.data)
         i.save(picture_path)
+        extracted_output=main(picture_path)
+        print("####################################################")
+        print(extracted_output)
+        print("####################################################")
         user=User.query.filter_by(licenceplate=extracted_output).first()
         image_file = url_for('static', filename='uploads/' + filename)
         if user :
