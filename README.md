@@ -1,7 +1,8 @@
 # ANPR-Chroma
  Deployment of ANPR model using flask 
 
-Flask is a web application framework written in Python. I have deployed my previous project of LicensePlateDetector using Flask as an api. This is an easy and quick way to see your models in production.
+Flask is a web application framework written in Python.         
+* I have deployed the project of LicensePlateDetector using Flask as an api. This is an easy and quick way to see your models in production.
 
 ### Number Plate Recognition System :
 
