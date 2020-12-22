@@ -34,7 +34,7 @@ Note:
         
 Contacts:        
 
-[Gmail](aryanbindal2015@gmail.com)                 
+Gmail: aryanbindal2015@gmail.com                 
 [Instagram](https://www.instagram.com/aryan__bindal/)          
 [linkedin](https://www.linkedin.com/in/aryan-bindal-3077401ab)           
 [Facebook](https://www.facebook.com/aryan.bindal.1604)           
