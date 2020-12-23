@@ -1,6 +1,5 @@
 absl-py==0.9.0
 appdirs==1.4.4
-astropy==4.2
 astunparse==1.6.3
 atomicwrites==1.4.0
 attrs==19.3.0
