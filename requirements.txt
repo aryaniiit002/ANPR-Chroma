@@ -176,7 +176,6 @@ tqdm==4.46.0
 traitlets==4.3.3
 Twisted==20.3.0
 typing==3.7.4.1
-ufw==0.36
 unattended-upgrades==0.1
 urllib3==1.25.9
 usb-creator==0.3.7
