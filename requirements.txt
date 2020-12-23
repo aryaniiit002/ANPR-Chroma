@@ -17,7 +17,6 @@ cffi==1.14.0
 chardet==3.0.4
 click==7.1.2
 cloudpickle==0.6.1
-cmdtest==0.32+git
 colorama==0.4.3
 coloredlogs==10.0
 command-not-found==0.3
