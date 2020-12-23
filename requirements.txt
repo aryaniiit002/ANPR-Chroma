@@ -131,7 +131,6 @@ pytest==4.6.11
 python-crfsuite==0.9.7
 python-dateutil==2.8.1
 python-debian==0.1.37
-python-xapp==2.0.1
 pytz==2020.1
 pyudev==0.21.0
 PyWavelets==1.1.1
