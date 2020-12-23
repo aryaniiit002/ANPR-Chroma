@@ -170,7 +170,6 @@ terminado==0.8.3
 testpath==0.4.4
 testresources==2.0.1
 threadpoolctl==2.0.0
-tifffile==2020.11.26
 toolz==0.11.1
 tornado==6.0.4
 tqdm==4.46.0
