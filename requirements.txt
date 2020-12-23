@@ -174,7 +174,6 @@ toolz==0.11.1
 tornado==6.0.4
 tqdm==4.46.0
 traitlets==4.3.3
-ttystatus==0.38
 Twisted==20.3.0
 typing==3.7.4.1
 ubuntu-advantage-tools==24.4
