@@ -119,7 +119,6 @@ pycparser==2.20
 pycups==2.0.1
 pyerfa==1.7.1.1
 Pygments==2.6.1
-PyGObject==3.38.0
 PyHamcrest==2.0.2
 PyJWT==1.7.1
 pymacaroons==0.13.0
