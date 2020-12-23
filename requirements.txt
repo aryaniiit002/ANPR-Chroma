@@ -19,7 +19,6 @@ click==7.1.2
 cloudpickle==0.6.1
 colorama==0.4.3
 coloredlogs==10.0
-command-not-found==0.3
 constantly==15.1.0
 cryptography==3.0
 cupshelpers==1.0
