@@ -177,7 +177,6 @@ traitlets==4.3.3
 Twisted==20.3.0
 typing==3.7.4.1
 urllib3==1.25.9
-usb-creator==0.3.7
 virtualenv==20.0.29+ds
 wadllib==1.3.4
 wcwidth==0.1.9
