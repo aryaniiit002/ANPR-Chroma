@@ -1,1 +1,2 @@
-web: python3 ./ANPR_Chroma/run.py
+release: python run.py migrate
+web: gunicorn gettingstarted.wsgi --log-file -
