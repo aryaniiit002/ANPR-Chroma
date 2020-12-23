@@ -138,7 +138,6 @@ PyYAML==5.3.1
 pyzmq==19.0.1
 qtconsole==4.7.4
 QtPy==1.9.0
-rasa-nlu==0.15.1
 regex==2019.8.19
 reportlab==3.5.47
 requests==2.23.0
