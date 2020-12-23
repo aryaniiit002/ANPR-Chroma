@@ -34,7 +34,6 @@ filelock==3.0.12
 Flask==1.1.2
 future==0.17.1
 gast==0.3.3
-gestures==0.2.3
 gevent==1.5.0
 google-auth==1.14.3
 google-auth-oauthlib==0.4.1
