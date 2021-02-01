@@ -40,8 +40,6 @@ Gmail: aryanbindal2015@gmail.com
 [linkedin](https://www.linkedin.com/in/aryan-bindal-3077401ab)           
 [Facebook](https://www.facebook.com/aryan.bindal.1604)    
 
-`I will deploy the site soon till then here are some screenshots of localhost          `
-
 ### ScreenShots :)           
 
 * Home Page             
