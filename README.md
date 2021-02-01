@@ -32,12 +32,69 @@ Note:
 
 ## Author -  Aryan Bindal       
         
-###Contacts:        
+### Contacts:        
 
 Gmail: aryanbindal2015@gmail.com                 
 [Instagram](https://www.instagram.com/aryan__bindal/)          
 [linkedin](https://www.linkedin.com/in/aryan-bindal-3077401ab)           
 [Facebook](https://www.facebook.com/aryan.bindal.1604)    
 
-##ScreenShots :)           
+`I will deploy the site soon till then here are some screenshots of localhost          `
 
+### ScreenShots :)           
+
+* Home Page             
+
+![Home page](https://github.com/aryaniiit002/ANPR-Chroma/blob/main/ScreenShots/home.png)
+
+* A little Description
+
+![Description](https://github.com/aryaniiit002/ANPR-Chroma/blob/main/ScreenShots/description.png)
+
+* If you try to login with unregistered account
+
+![Login](https://github.com/aryaniiit002/ANPR-Chroma/blob/main/ScreenShots/login%20Unsuccesful.png)
+
+* Registration of new checkPost  
+
+![Sign up](https://github.com/aryaniiit002/ANPR-Chroma/blob/main/ScreenShots/New%20Login.png)
+
+* Now login again
+
+![Login](https://github.com/aryaniiit002/ANPR-Chroma/blob/main/ScreenShots/re-login.png)
+
+* Home page after checkPost login
+
+![Home after Login](https://github.com/aryaniiit002/ANPR-Chroma/blob/main/ScreenShots/home%20after%20login.png)
+
+* You can see and update current CheckPost's account
+
+![Account](https://github.com/aryaniiit002/ANPR-Chroma/blob/main/ScreenShots/Login%20account.png)
+
+* It's time to upload your vehicle's image and if your vehicle is not registered it will look like this
+
+![ANPR Online Demo](https://github.com/aryaniiit002/ANPR-Chroma/blob/main/ScreenShots/upload%20img.png)
+
+* and if vehicle is not registered a mail is send to higher authority
+
+![Mail to Authority](https://github.com/aryaniiit002/ANPR-Chroma/blob/main/ScreenShots/not%20registered%20mail.png)
+
+* now driver need to register the vehicle
+
+![Registration](https://github.com/aryaniiit002/ANPR-Chroma/blob/main/ScreenShots/registration%20of%20vehicle.png)
+
+* If registration is successfull then a mail is send to driver
+
+![Mail to driver](https://github.com/aryaniiit002/ANPR-Chroma/blob/main/ScreenShots/mail%20to%20driver.png)
+
+* Vehicle is registered now
+
+![Vehicle registered](https://github.com/aryaniiit002/ANPR-Chroma/blob/main/ScreenShots/registered.png)
+
+* When everything is done and CheckPost wants to logout
+
+![Logout](https://github.com/aryaniiit002/ANPR-Chroma/blob/main/ScreenShots/logout.png)
+
+* If you try to login an already registered account of CheckPost
+
+![Login](https://github.com/aryaniiit002/ANPR-Chroma/blob/main/ScreenShots/already%20registered.png)
