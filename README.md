@@ -22,6 +22,7 @@ An application to recognise the number plate from a given image of a car and ver
 Note: 
 * File [run.py](ANPR_Chroma/run.py) is to run flask application, if you want to test main licence plate recognition program - check [product.py](ANPR_Chroma/flaskblog/product.py)
 * Make sure to add your own 2 databases in "__init__.py" directory before running flask application.
+If you get any issues ask me [here](https://github.com/aryaniiit002/ANPR-Chroma/issues)
 
 ## Built With
 
