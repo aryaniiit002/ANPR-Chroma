@@ -21,7 +21,7 @@ An application to recognise the number plate from a given image of a car and ver
 
 Note: 
 * File [run.py](ANPR_Chroma/run.py) is to run flask application, if you want to test main licence plate recognition program - check [product.py](ANPR_Chroma/flaskblog/product.py)
-* Make sure to add your own 2 databases in "__init__.py" directory before running flask application, and update your databse path [here](https://github.com/aryaniiit002/ANPR-Chroma/blob/fd89a6f62013caf711c62457cef2f7c8d60ae485/ANPR_Chroma/flaskblog/__init__.py#L14)
+* Make sure to add your own 2 databases in "__init__.py" directory before running flask application, and update your databse path [here](https://github.com/aryaniiit002/ANPR-Chroma/blob/fd89a6f62013caf711c62457cef2f7c8d60ae485/ANPR_Chroma/flaskblog/__init__.py#L14)           
 If you get any issues ask me [here](https://github.com/aryaniiit002/ANPR-Chroma/issues)
 
 ## Built With
@@ -74,10 +74,10 @@ Gmail: aryanbindal2015@gmail.com
 
 ![ANPR Online Demo](https://github.com/aryaniiit002/ANPR-Chroma/blob/main/ScreenShots/upload%20img.png)
 
-* and if vehicle is not registered a mail is send to higher authority             
-Note: Mail will only if -:
-* Write your google account's password [here](https://github.com/aryaniiit002/ANPR-Chroma/blob/fd89a6f62013caf711c62457cef2f7c8d60ae485/ANPR_Chroma/flaskblog/__init__.py#L22)      
-* You have to turn off "2 step verification" and turn off "Less secure app access" from your google account settings
+* And if your vehicle is not registered a mail is send to higher authority                    
+> Note: For Gmail services to work -               
+> Write your google account's password [here](https://github.com/aryaniiit002/ANPR-Chroma/blob/fd89a6f62013caf711c62457cef2f7c8d60ae485/ANPR_Chroma/flaskblog/__init__.py#L22)      
+> You have to turn off "2 step verification" and turn off "Less secure app access" from your google account settings
 
 ![Mail to Authority](https://github.com/aryaniiit002/ANPR-Chroma/blob/main/ScreenShots/not%20registered%20mail.png)
 
