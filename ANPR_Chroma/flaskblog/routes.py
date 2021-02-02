@@ -42,8 +42,7 @@ def anpr():
             return render_template('anpr.html', form=form, label=extracted_output, img_src=image_file)
         else:
             flash("Your vehicle is not registered", 'danger')
-            #send_mail(current_user.email, "Vehicle not registered", extracted_output)
-            message= Message('Vehicle not registered',sender=current_user.email, recipients=['aryanbindal2015@gmail.com'])
+            message= Message('Vehicle not registered',sender=current_user.email, recipients=['authority@gmail.com'])
             message.body = extracted_output
             mail.send(message)
             return render_template('anpr.html', form=form, label=extracted_output, img_src=image_file, msg="Please register your vehicle!")
@@ -54,15 +53,11 @@ def anpr():
 @app.route("/register", methods=['GET', 'POST'])
 @login_required
 def register():
-    #if current_user.is_authenticated:
-     #   return redirect(url_for('home'))
     form = RegistrationForm()
     if form.validate_on_submit():
-        #hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
         user = User(username=form.username.data, email=form.email.data, licenceplate=form.licenceplate.data)
         db.session.add(user)
         db.session.commit()
-        #send_mail(form.email.data, "Vehicle registered!", form.licenceplate.data)
         message= Message("Vehicle registered",sender=current_user.email, recipients=[form.email.data])
         message.body = form.licenceplate.data
         mail.send(message)
@@ -106,11 +101,6 @@ def logout():
     logout_user()
     flash('You are Logged out', 'success')
     return redirect(url_for('home'))
-
-#app.route("/mail")
-#def mail():
-    #form=MailForm()
- #   return redirect(url_for('anpr'))
 
 def save_picture(form_picture):
     random_hex = secrets.token_hex(8)
