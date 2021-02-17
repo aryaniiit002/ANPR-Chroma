@@ -21,8 +21,9 @@ An application to recognise the number plate from a given image of a car and ver
 
 Note: 
 * File [run.py](ANPR_Chroma/run.py) is to run flask application, if you want to test main licence plate recognition program - check [product.py](ANPR_Chroma/flaskblog/product.py)
-* Make sure to add your own 2 databases in "__init__.py" directory before running flask application, and update your databse path [here](https://github.com/aryaniiit002/ANPR-Chroma/blob/fd89a6f62013caf711c62457cef2f7c8d60ae485/ANPR_Chroma/flaskblog/__init__.py#L14)           
-If you get any issues ask me [here](https://github.com/aryaniiit002/ANPR-Chroma/issues)
+* Make sure to add your own 2 databases in "__init__.py" directory before running flask application, and update your database path [here](https://github.com/aryaniiit002/ANPR-Chroma/blob/fd89a6f62013caf711c62457cef2f7c8d60ae485/ANPR_Chroma/flaskblog/__init__.py#L14)           
+  If you get any issues ask me [here](https://github.com/aryaniiit002/ANPR-Chroma/issues)             
+* It may be possible that you would get a lot of errors even after installing requirements so don't give up and copy-paste your errors on ggogle you will definitely find your solutions there.
 
 ## Built With
 
@@ -31,14 +32,7 @@ If you get any issues ask me [here](https://github.com/aryaniiit002/ANPR-Chroma/
 * [Flask](https://flask.palletsprojects.com/en/1.1.x/) - Web application framework written in Python
 * [SQLite](https://www.sqlite.org/index.html) -Used for designing and manipulating of database
 
-## Author -  Aryan Bindal       
-        
-### Contacts:        
-
-Gmail: aryanbindal2015@gmail.com                 
-[Instagram](https://www.instagram.com/aryan__bindal/)          
-[linkedin](https://www.linkedin.com/in/aryan-bindal-3077401ab)           
-[Facebook](https://www.facebook.com/aryan.bindal.1604)    
+## Author -  [Aryan Bindal](https://github.com/aryaniiit002)          
 
 ### ScreenShots :)           
 
