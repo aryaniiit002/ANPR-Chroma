@@ -32,7 +32,7 @@ Note:
 * [Flask](https://flask.palletsprojects.com/en/1.1.x/) - Web application framework written in Python
 * [SQLite](https://www.sqlite.org/index.html) -Used for designing and manipulating of database
 
-## Author -  [Aryan Bindal](https://github.com/aryaniiit002)          
+### Author -  [Aryan Bindal](https://github.com/aryaniiit002)          
 
 ### ScreenShots :)           
 
