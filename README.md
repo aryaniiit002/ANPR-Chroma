@@ -23,7 +23,6 @@ Note:
 * File [run.py](ANPR_Chroma/run.py) is to run flask application, if you want to test main licence plate recognition program - check [product.py](ANPR_Chroma/flaskblog/product.py)
 * Make sure to add your own 2 databases in "__init__.py" directory before running flask application, and update your database path [here](https://github.com/aryaniiit002/ANPR-Chroma/blob/fd89a6f62013caf711c62457cef2f7c8d60ae485/ANPR_Chroma/flaskblog/__init__.py#L14)           
   If you get any issues ask me [here](https://github.com/aryaniiit002/ANPR-Chroma/issues)             
-* It may be possible that you would get a lot of errors even after installing requirements so don't give up and copy-paste your errors on ggogle you will definitely find your solutions there.
 
 ## Built With
 
