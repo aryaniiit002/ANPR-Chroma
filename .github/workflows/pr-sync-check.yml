@@ -1,0 +1,82 @@
+name: PR Sync Check
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  issue_comment:
+    types: [created]
+
+jobs:
+  sync-check:
+    # Run only if it's a PR or a comment with the trigger phrase
+    if: |
+      (github.event_name == 'pull_request') ||
+      (github.event.issue.pull_request && contains(github.event.comment.body, '#sync-check'))
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set up PR context
+        id: pr
+        run: |
+          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            echo "BASE_REF=${{ github.event.pull_request.base.ref }}" >> "$GITHUB_ENV"
+            echo "HEAD_REF=${{ github.event.pull_request.head.ref }}" >> "$GITHUB_ENV"
+            echo "ISSUE_NUMBER=${{ github.event.pull_request.number }}" >> "$GITHUB_ENV"
+          else
+            PR_API_URL="${{ github.event.issue.pull_request.url }}"
+            echo "Fetching PR info from API: $PR_API_URL"
+            PR_DATA=$(gh api $PR_API_URL)
+            echo "BASE_REF=$(echo "$PR_DATA" | jq -r '.base.ref')" >> "$GITHUB_ENV"
+            echo "HEAD_REF=$(echo "$PR_DATA" | jq -r '.head.ref')" >> "$GITHUB_ENV"
+            echo "ISSUE_NUMBER=$(echo "$PR_DATA" | jq -r '.number')" >> "$GITHUB_ENV"
+          fi
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Checkout PR branch
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ env.HEAD_REF }}
+          fetch-depth: 0
+
+      - name: Fetch base branch
+        run: git fetch origin ${{ env.BASE_REF }}
+
+      - name: Check if base is merged into head
+        id: sync_status
+        run: |
+          if git merge-base --is-ancestor origin/${{ env.BASE_REF }} HEAD; then
+            echo "result=up-to-date" >> "$GITHUB_OUTPUT"
+          else
+            echo "result=behind" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: React to comment (optional)
+        if: github.event_name == 'issue_comment'
+        uses: khan/pull-request-comment-trigger@master
+        with:
+          trigger: '#sync-check'
+          reaction: rocket
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Comment PR with result
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          issue-number: ${{ env.ISSUE_NUMBER }}
+          body: |
+            🔍 **PR Sync Check**
+            - Base: `${{ env.BASE_REF }}`
+            - Head: `${{ env.HEAD_REF }}`
+            - ✅ Status: **${{ steps.sync_status.outputs.result == 'up-to-date' && 'Up-to-date' || 'Behind the base branch' }}**
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+
+Comment: >
+  A unified GitHub Actions workflow that checks whether a PR branch includes the latest commits from the base branch, and should trigger:
+  ✅ On PR creation (opened), new commits (synchronize), and reopens.
+  ✅ Manually via a special comment in the PR (e.g., #sync-check).
+  ✅ Post a comment in the PR showing whether it's up-to-date or behind.
+  
+  Trigger Phrase is '#sync-check'
