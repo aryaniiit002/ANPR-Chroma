@@ -17,14 +17,10 @@ jobs:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
       - uses: SonarSource/sonarqube-scan-action@v4
         with:
-          projectBaseDir: .
+          projectBaseDir: ./ANPR_Chroma
           args: |
-#            -Dsonar.organization=my-organization # For SonarQube Cloud only
             -Dsonar.projectKey=Github_Actions
-#            -Dsonar.python.coverage.reportPaths=coverage.xml
             -Dsonar.sources=ANPR_Chroma/
-#            -Dsonar.tests=tests/
-#            -Dsonar.test.exclusions=tests/**
             -Dsonar.verbose=true
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

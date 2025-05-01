@@ -10,8 +10,7 @@ jobs:
   detect-changes:
     runs-on: ubuntu-latest
     outputs:
-      chroma_changed: ${{ steps.filter.outputs.chroma }}
-      infrared_changed: ${{ steps.filter.outputs.infrared }}
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
       - uses: actions/checkout@v4
 
@@ -24,21 +23,21 @@ jobs:
             infrared:
               - 'ANPR_Infrared/**'
 
+      - id: set-matrix
+        run: |
+          echo 'Detected changes...'
+          MATRIX=$(jq -n '[
+            if "${{ steps.filter.outputs.chroma }}" == "true" then { id: "chroma", path: "ANPR_Chroma", sonar_key: "Github_Actions" } else empty end,
+            if "${{ steps.filter.outputs.infrared }}" == "true" then { id: "infrared", path: "ANPR_Infrared", sonar_key: "anpr_infrared" } else empty end
+          ]')
+          echo "matrix=$MATRIX" >> $GITHUB_OUTPUT
+
   sonar-scan:
     needs: detect-changes
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        include:
-          - id: chroma
-            changed: ${{ needs.detect-changes.outputs.chroma_changed == 'true' }}
-            path: ANPR_Chroma
-            sonar_key: Github_Actions
-          - id: infrared
-            changed: ${{ needs.detect-changes.outputs.infrared_changed == 'true' }}
-            path: ANPR_Infrared
-            sonar_key: anpr_infrared
-    if: matrix.changed == true
+        include: ${{ fromJson(needs.detect-changes.outputs.matrix) }}
     steps:
       - uses: actions/checkout@v4
         with:
