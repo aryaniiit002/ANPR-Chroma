@@ -65,7 +65,9 @@ jobs:
 #          cd ${{ matrix.path }}
 #          coverage run -m pytest
 #          coverage xml
-
+      - name: Test SonarQube server connectivity
+        run: |
+          curl -I ${{ secrets.SONAR_HOST_URL }}
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v4
         with:
