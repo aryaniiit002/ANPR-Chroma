@@ -10,18 +10,12 @@ jobs:
   build:
     name: Build and analyze
     runs-on: ubuntu-latest
-
+    
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
       - uses: SonarSource/sonarqube-scan-action@v4
-        with:
-          projectBaseDir: ./ANPR_Chroma
-          args: |
-            -Dsonar.projectKey=Github_Actions
-            -Dsonar.sources=ANPR_Chroma/
-            -Dsonar.verbose=true
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
