@@ -25,11 +25,18 @@ jobs:
 
       - id: set-matrix
         run: |
-          echo 'Detected changes...'
-          MATRIX=$(jq -n '[
-            if "${{ steps.filter.outputs.chroma }}" == "true" then { id: "chroma", path: "ANPR_Chroma", sonar_key: "Github_Actions" } else empty end,
-            if "${{ steps.filter.outputs.infrared }}" == "true" then { id: "infrared", path: "ANPR_Infrared", sonar_key: "anpr_infrared" } else empty end
-          ]')
+          MATRIX="["
+
+          if [ "${{ steps.filter.outputs.chroma }}" == "true" ]; then
+            MATRIX="$MATRIX{\"id\":\"chroma\",\"path\":\"ANPR_Chroma\",\"sonar_key\":\"anpr_chroma\"},"
+          fi
+
+          if [ "${{ steps.filter.outputs.infrared }}" == "true" ]; then
+            MATRIX="$MATRIX{\"id\":\"infrared\",\"path\":\"ANPR_Infrared\",\"sonar_key\":\"anpr_infrared\"},"
+          fi
+
+          MATRIX="${MATRIX%,}]"  # Remove trailing comma and close array
+
           echo "matrix=$MATRIX" >> $GITHUB_OUTPUT
 
   sonar-scan:
