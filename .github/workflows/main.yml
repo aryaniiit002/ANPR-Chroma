@@ -1,58 +1,23 @@
-#name: PR Branch Check
-#
-#on:
-#  issue_comment:
-#    types: [ created, edited ]
-#
-#jobs:
-#  check_pull_request:
-#    if: github.event.comment.body == 'Check Latest Pull'
-#          || github.event.comment.body == 'Check Latest Pull from parent branch'
-#          || github.event.comment.body == 'Check Pull'
-#
-#    runs-on: ubuntu-latest
-#    outputs:
-#      message: ${{ github.event.comment.body }}
-#
-#
-#    steps:
-#      - uses: khan/pull-request-comment-trigger@master
-#        name: React with rocket on run
-#        with:
-#          trigger: ','
-#          reaction: rocket
-#        env:
-#          GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
-#
-#      - run: 'echo We print it here for this action to work'
-#        if: 'true'
-#
-#      - name: Checkout repository
-#        uses: actions/checkout@v2
-#
-#      - name: Fetch latest changes
-#        run: git fetch --prune --unshallow
-#
-#      - name: Check pull request branch
-#        run: |
-#          git checkout ${{ github.event.pull_request.head.ref }}
-#          git merge-base --is-ancestor ${{ github.event.pull_request.base.sha }} ${{ github.event.pull_request.head.sha }}
-#          if [ $? -eq 0 ]; then
-#            echo "Pull request branch is up to date with the base branch."
-#            echo "::set-output name=result::up-to-date"
-#          else
-#            echo "Pull request branch is behind the base branch."
-#            echo "::set-output name=result::behind"
-#
-#          fi
-#
-#      - name: Capture result
-#        id: capture_result
-#        run: echo "Result: ${{ steps.check_pull_request.outputs.result }}" >> "$GITHUB_OUTPUT"
-#
-#      - name: Comment PR
-#        uses: checkstyle/contribution/comment-action@master
-#        with:
-#          message: ${{steps.out.outputs.message}}
-#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#
+name: Manual Sync Trigger Test
+
+on:
+  issue_comment:
+    types: [created]
+
+jobs:
+  test-sync-trigger:
+    if: github.event.issue.pull_request && contains(github.event.comment.body, '#sync-check')
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Show the comment
+        run: echo "Received comment: ${{ github.event.comment.body }}"
+
+      - name: Comment back on the PR
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            🚀 **Manual sync check triggered!**
+            - You commented: `${{ github.event.comment.body }}`
+          token: ${{ secrets.GITHUB_TOKEN }}
