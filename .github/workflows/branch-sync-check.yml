@@ -1,0 +1,39 @@
+name: Check PR Sync with Base Branch
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  check-pr-sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout PR branch
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Fetch full history for accurate comparison
+
+      - name: Fetch base branch (develop or your custom base)
+        run: git fetch origin ${{ github.event.pull_request.base.ref }}
+
+      - name: Check if PR branch is behind base
+        run: |
+          BASE_BRANCH=origin/${{ github.event.pull_request.base.ref }}
+          BEHIND=$(git rev-list --left-right --count $BASE_BRANCH...HEAD | awk '{print $1}')
+          echo "Commits PR branch is behind base: $BEHIND"
+          if [ "$BEHIND" -gt 0 ]; then
+            echo "❌ Your PR branch is behind the base branch."
+            exit 1
+          else
+            echo "✅ Your PR branch is up-to-date with the base branch."
+          fi
+
+      - name: Leave a PR comment if behind
+        if: failure()
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            🚨 Your branch is **behind** the base branch `${{ github.event.pull_request.base.ref }}`.
+            Please rebase or merge the latest changes before proceeding.
