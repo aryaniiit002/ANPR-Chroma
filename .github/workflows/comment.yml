@@ -18,13 +18,23 @@ jobs:
         run: git fetch --prune --unshallow
 
       - name: Check pull request branch
+        id: check_sync
         run: |
           git checkout ${{ github.event.pull_request.head.ref }}
           git merge-base --is-ancestor ${{ github.event.pull_request.base.sha }} ${{ github.event.pull_request.head.sha }}
           if [ $? -eq 0 ]; then
-            echo "Pull request branch is up to date with the base branch."
+            echo "Branch is up to date."
           else
-            echo "Pull request branch is behind the base branch."
+            echo "Branch is behind base."
             exit 1
           fi
 
+      - name: Comment if behind base
+        if: failure()
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            ⚠️ This PR branch is **behind** the base branch `${{ github.event.pull_request.base.ref }}`.
+            Please rebase or merge the latest changes from the base branch.
