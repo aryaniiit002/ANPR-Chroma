@@ -64,17 +64,16 @@ jobs:
         uses: SonarSource/sonarqube-scan-action@v4
         with:
           projectBaseDir: ${{ matrix.path }}
-          args: >
+          args: |
             -Dsonar.projectKey=${{ matrix.sonar_key }}
             -Dsonar.sources=.
-#            -Dsonar.python.coverage.reportPaths=coverage.xml
             -Dsonar.verbose=true
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
 
-Comment: >
-  🧠 Benefits
-  Only scans the services that changed in the PR
-  Each SonarQube project stays separate and focused
-  Easy to scale with more services (just update the matrix)
+#Comment: >
+#  🧠 Benefits
+#  Only scans the services that changed in the PR
+#  Each SonarQube project stays separate and focused
+#  Easy to scale with more services (just update the matrix)

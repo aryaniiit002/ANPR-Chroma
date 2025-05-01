@@ -18,7 +18,7 @@ jobs:
       - uses: SonarSource/sonarqube-scan-action@v4
         with:
           projectBaseDir: .
-          args: >
+          args: |
 #            -Dsonar.organization=my-organization # For SonarQube Cloud only
             -Dsonar.projectKey=Github_Actions
 #            -Dsonar.python.coverage.reportPaths=coverage.xml

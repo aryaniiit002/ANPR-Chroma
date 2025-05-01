@@ -73,10 +73,10 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 
 
-Comment: >
-  A unified GitHub Actions workflow that checks whether a PR branch includes the latest commits from the base branch, and should trigger:
-  ✅ On PR creation (opened), new commits (synchronize), and reopens.
-  ✅ Manually via a special comment in the PR (e.g., #sync-check).
-  ✅ Post a comment in the PR showing whether it's up-to-date or behind.
-  
-  Trigger Phrase is '#sync-check'
+#Comment: >
+#  A unified GitHub Actions workflow that checks whether a PR branch includes the latest commits from the base branch, and should trigger:
+#  ✅ On PR creation (opened), new commits (synchronize), and reopens.
+#  ✅ Manually via a special comment in the PR (e.g., #sync-check).
+#  ✅ Post a comment in the PR showing whether it's up-to-date or behind.
+#
+#  Trigger Phrase is '#sync-check'
