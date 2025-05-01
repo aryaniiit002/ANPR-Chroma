@@ -28,11 +28,11 @@ jobs:
           MATRIX="["
 
           if [ "${{ steps.filter.outputs.chroma }}" == "true" ]; then
-            MATRIX="$MATRIX{\"id\":\"chroma\",\"path\":\"ANPR_Chroma\",\"sonar_key\":\"anpr_chroma\"},"
+            MATRIX="$MATRIX{\"id\":\"chroma\",\"path\":\"ANPR_Chroma\",\"sonar_key\":\"Github_Actions\"},"
           fi
 
           if [ "${{ steps.filter.outputs.infrared }}" == "true" ]; then
-            MATRIX="$MATRIX{\"id\":\"infrared\",\"path\":\"ANPR_Infrared\",\"sonar_key\":\"anpr_infrared\"},"
+            MATRIX="$MATRIX{\"id\":\"infrared\",\"path\":\"ANPR_Infrared\",\"sonar_key\":\"Github_Actions\"},"
           fi
 
           MATRIX="${MATRIX%,}]"  # Remove trailing comma and close array
