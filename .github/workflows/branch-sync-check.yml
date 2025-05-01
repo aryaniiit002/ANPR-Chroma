@@ -1,39 +1,80 @@
-name: Check PR Sync with Base Branch
+name: Multi-Service Sonar Scan
 
 on:
   pull_request:
-    types: [opened, synchronize, reopened]
+    paths:
+      - 'ANPR_Chroma/**'
+      - 'ANPR_Infrared/**'
 
 jobs:
-  check-pr-sync:
+  detect-changes:
     runs-on: ubuntu-latest
+    outputs:
+      chroma_changed: ${{ steps.filter.outputs.chroma }}
+      infrared_changed: ${{ steps.filter.outputs.infrared }}
     steps:
-      - name: Checkout PR branch
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v4
+
+      - id: filter
+        uses: dorny/paths-filter@v3
         with:
-          fetch-depth: 0  # Fetch full history for accurate comparison
+          filters: |
+            chroma:
+              - 'ANPR_Chroma/**'
+            infrared:
+              - 'ANPR_Infrared/**'
 
-      - name: Fetch base branch (develop or your custom base)
-        run: git fetch origin ${{ github.event.pull_request.base.ref }}
-
-      - name: Check if PR branch is behind base
-        run: |
-          BASE_BRANCH=origin/${{ github.event.pull_request.base.ref }}
-          BEHIND=$(git rev-list --left-right --count $BASE_BRANCH...HEAD | awk '{print $1}')
-          echo "Commits PR branch is behind base: $BEHIND"
-          if [ "$BEHIND" -gt 0 ]; then
-            echo "❌ Your PR branch is behind the base branch."
-            exit 1
-          else
-            echo "✅ Your PR branch is up-to-date with the base branch."
-          fi
-
-      - name: Leave a PR comment if behind
-        if: failure()
-        uses: peter-evans/create-or-update-comment@v4
+  sonar-scan:
+    needs: detect-changes
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - id: chroma
+            changed: ${{ needs.detect-changes.outputs.chroma_changed == 'true' }}
+            path: ANPR_Chroma
+            sonar_key: Github_Actions
+          - id: infrared
+            changed: ${{ needs.detect-changes.outputs.infrared_changed == 'true' }}
+            path: ANPR_Infrared
+            sonar_key: anpr_infrared
+    if: matrix.changed == true
+    steps:
+      - uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          issue-number: ${{ github.event.pull_request.number }}
-          body: |
-            🚨 Your branch is **behind** the base branch `${{ github.event.pull_request.base.ref }}`.
-            Please rebase or merge the latest changes before proceeding.
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+#      - name: Install dependencies
+#        run: |
+#          pip install -r ${{ matrix.path }}/requirements.txt
+#          pip install coverage
+#
+#      - name: Run tests
+#        run: |
+#          cd ${{ matrix.path }}
+#          coverage run -m pytest
+#          coverage xml
+
+      - name: SonarQube Scan
+        uses: SonarSource/sonarqube-scan-action@v4
+        with:
+          projectBaseDir: ${{ matrix.path }}
+          args: >
+            -Dsonar.projectKey=${{ matrix.sonar_key }}
+            -Dsonar.sources=.
+#            -Dsonar.python.coverage.reportPaths=coverage.xml
+            -Dsonar.verbose=true
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+
+Comment: >
+  🧠 Benefits
+  Only scans the services that changed in the PR
+  Each SonarQube project stays separate and focused
+  Easy to scale with more services (just update the matrix)
